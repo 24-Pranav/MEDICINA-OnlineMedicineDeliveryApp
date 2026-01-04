@@ -60,7 +60,7 @@ class _AlertScreenState extends State<AlertScreen> {
               radius: Constants.avatarRadius,
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(Constants.avatarRadius)),
-                  child: Image.asset("assests/images/right.jpeg")
+                  child: Image.asset("assets/images/right.jpeg")
               ),
             ),
         ),

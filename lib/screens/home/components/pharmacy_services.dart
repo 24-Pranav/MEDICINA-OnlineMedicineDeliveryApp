@@ -21,22 +21,22 @@ class PharmacyServices extends StatelessWidget {
           child: Row(
             children: [
               PharmacyCard(
-                image: "assests/images/pharmacy1.jpg",
+                image: "assets/images/pharmacy1.jpg",
                 category: "SPC",
                 press: () {},
               ),
               PharmacyCard(
-                image: "assests/images/pharmacy2.png",
+                image: "assets/images/pharmacy2.png",
                 category: "Healthguard",
                 press: () {},
               ),
               PharmacyCard(
-                image: "assests/images/pharmacy3.jpg",
+                image: "assets/images/pharmacy3.jpg",
                 category: "George Steuart Health",
                 press: () {},
               ),
               PharmacyCard(
-                image: "assests/images/pharmacy4.png",
+                image: "assets/images/pharmacy4.png",
                 category: "Hemas Pharmaceuti-cals",
                 press: () {},
               ),

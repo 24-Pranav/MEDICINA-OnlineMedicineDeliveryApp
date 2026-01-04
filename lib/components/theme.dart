@@ -162,18 +162,18 @@ class AppColors {
 }
 
 class Icon {
-  String heartOutline = "assests/icon/heart_outline.png";
-  String heart = "assests/icon/heart.png";
-  String rightArrow = "assests/icon/right-arrow.png";
-  String ex01 = 'assests/icons/ex01.png';
-  String ex03 = 'assests/icons/ex03.png';
-  String ex02 = 'assests/icons/ex02.png';
+  String heartOutline = "assets/icon/heart_outline.png";
+  String heart = "assets/icon/heart.png";
+  String rightArrow = "assets/icon/right-arrow.png";
+  String ex01 = 'assets/icons/ex01.png';
+  String ex03 = 'assets/icons/ex03.png';
+  String ex02 = 'assets/icons/ex02.png';
 
-  String masterCard = 'assests/images_copy/mastercard.png';
-  String amexCard = 'assests/images_copy/amex.png';
-  String visaCard = 'assests/images_copy/visa.png';
-  String discoverCard = 'assests/images_copy/discover.png';
-  String chip = 'assests/images_copy/chip.png';
+  String masterCard = 'assets/images_copy/mastercard.png';
+  String amexCard = 'assets/images_copy/amex.png';
+  String visaCard = 'assets/images_copy/visa.png';
+  String discoverCard = 'assets/images_copy/discover.png';
+  String chip = 'assets/images_copy/chip.png';
   
 }
 

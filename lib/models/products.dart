@@ -27,7 +27,7 @@ List<Product> demoProducts = [
   Product(
     id: 1,
     images: [
-      "assests/images/otcmedicine.png",
+      "assets/images/otcmedicine.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -45,7 +45,7 @@ List<Product> demoProducts = [
   Product(
     id: 2,
     images: [
-      "assests/images/diabities.png",
+      "assets/images/diabities.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -62,7 +62,7 @@ List<Product> demoProducts = [
   Product(
     id: 3,
     images: [
-      "assests/images/personalcare.png",
+      "assets/images/personalcare.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -80,7 +80,7 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assests/images/babymother.png",
+      "assets/images/babymother.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -97,7 +97,7 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assests/images/firstaid.png",
+      "assets/images/firstaid.png",
     ],
     colors: [
       Color(0xFFF6625E),
@@ -114,7 +114,7 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assests/images/wellness.png",
+      "assets/images/wellness.png",
     ],
     colors: [
       //Color(0xFFF6625E),

@@ -90,7 +90,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         hintText: "Enter your address",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
-            CustomSurffixIcon(svgIcon: "assests/icons/Location point.svg"),
+            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
       ),
     );
   }
@@ -124,7 +124,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         labelText: "Phone Number",
         hintText: "Enter your phone number",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assests/icons/Phone.svg"),
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
       ),
       maxLength: 10,
     );
@@ -154,7 +154,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         labelText: "Last Name",
         hintText: "Enter your last name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assests/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
       ),
     );
   }
@@ -183,7 +183,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         labelText: "First Name",
         hintText: "Enter your first name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assests/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
       ),
     );
   }

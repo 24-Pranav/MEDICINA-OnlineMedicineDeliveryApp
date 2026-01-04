@@ -43,7 +43,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                     hintText: "Enter your phone number",
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     suffixIcon:
-                        CustomSurffixIcon(svgIcon: "assests/icons/Phone.svg"),
+                        CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
                   ),
                 ),
                 Container(

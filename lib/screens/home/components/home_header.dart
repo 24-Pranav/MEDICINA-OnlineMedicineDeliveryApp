@@ -18,7 +18,7 @@ class HomeHeader extends StatelessWidget {
         children: [
           SearchField(),
           IconBtnWithCounter(
-            svgSrc: "assests/icons/Cart Icon.svg",
+            svgSrc: "assets/icons/Cart Icon.svg",
             press: () {},
           ),
         ],

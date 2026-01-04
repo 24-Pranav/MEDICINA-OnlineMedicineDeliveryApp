@@ -18,11 +18,11 @@ class Body extends StatelessWidget {
           ),
         ),
         Image.asset(
-          "assests/images/success.png",
+          "assets/images/success.png",
           height: SizeConfig.screenHeight * 0.5, // 50%
         ),
         Image.asset(
-          "assests/images/success2.png",
+          "assets/images/success2.png",
           height: SizeConfig.screenHeight * 0.15, // 10%
         ),
         SizedBox(height: SizeConfig.screenHeight * 0.01),
