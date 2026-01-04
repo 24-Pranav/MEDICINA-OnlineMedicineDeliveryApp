@@ -1,12 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:medicina/Help.dart';
 import 'package:medicina/Logout.dart';
-import 'package:medicina/My%20Wishlist.dart';
-import 'package:medicina/My%20cart.dart';
-import 'package:medicina/Shop%20by%20category.dart';
+import 'package:medicina/my_wishlist.dart';
+import 'package:medicina/my_cart.dart';
+import 'package:medicina/shop_by_category.dart';
 import 'package:medicina/home.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -75,7 +78,7 @@ class MyDrawer extends StatelessWidget {
                         width: 60,
                         height: 60,
                         child: CircleAvatar(
-                            backgroundImage: AssetImage('images/happy.jpg')),
+                            backgroundImage: AssetImage('assets/images/happy.jpg')),
                       ),
                       SizedBox(
                         height: 15,
