@@ -18,25 +18,24 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  firebase_auth: ^0.14.0+8
-  firebase_core: ^0.4.1+3
-  pinput: ^0.2.6
-
-  firebase_storage: ^3.0.8
-  image_picker: ^0.6.7+4
+  firebase_auth: ^4.17.4
+  firebase_core: ^2.25.4
+  pinput: ^4.0.0
+  firebase_storage: ^11.6.5
+  image_picker: ^1.0.7
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.0
+  cupertino_icons: ^1.0.6
   # if you are using latest flutter please update your flutter_svg package
-  flutter_svg: ^0.18.0 # help us to use SVG in our app
-  provider: ^4.3.1 # for state management
+  flutter_svg: ^2.0.10+1 # help us to use SVG in our app
+  provider: ^6.1.1 # for state management
 
 dev_dependencies:
   flutter_test:
@@ -75,9 +74,9 @@ flutter:
     - family: Muli
       fonts:
          - asset: assests/fonts/muli/Muli.ttf
-         - asset: assests/fonts/muli/Muli-Bold.ttf
+         - asset: assents/fonts/muli/Muli-Bold.ttf
            weight: 700
-         - asset: assests/fonts/muli/Muli-Light.ttf
+         - asset: assents/fonts/muli/Muli-Light.ttf
            weight: 300
   #   - family: Trajan Pro
   #     fonts:
