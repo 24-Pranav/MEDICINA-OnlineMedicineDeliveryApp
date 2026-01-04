@@ -7,18 +7,25 @@ import 'package:medicina/Shop%20by%20category.dart';
 import 'package:medicina/home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   int index = 0;
   List<Widget> list = [
-    Home(),
-    Shopbycategory(),
-    Mycart(),
-    MyWishlist(),
-    Help(),
-    Logout()
+    const Home(),
+    const Shopbycategory(),
+    const Mycart(),
+    const MyWishlist(),
+    const Help(),
+    const Logout()
   ];
 
   @override
@@ -27,16 +34,15 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Navigation Drawer"),
+          title: const Text("Navigation Drawer"),
         ),
         body: list[index],
         drawer: MyDrawer(
           onTap: (ctx, i) {
-            // setState((){
-            //  index=i;
-            //  Navigator.pop(ctx);
-            //
-            // });
+            setState(() {
+              index = i;
+              Navigator.pop(ctx);
+            });
           },
         ),
       ),
@@ -45,8 +51,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyDrawer extends StatelessWidget {
-  MyDrawer({this.onTap});
-  final Function onTap;
+  const MyDrawer({super.key, required this.onTap});
+  final Function(BuildContext, int) onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +65,13 @@ class MyDrawer extends StatelessWidget {
             children: <Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(color: Colors.orange[600]),
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.all(6),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Container(
+                      SizedBox(
                         width: 60,
                         height: 60,
                         child: CircleAvatar(
@@ -93,37 +99,37 @@ class MyDrawer extends StatelessWidget {
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Home'),
+                leading: const Icon(Icons.home),
+                title: const Text('Home'),
                 onTap: () => onTap(context, 0),
               ),
               ListTile(
-                leading: Icon(Icons.category),
-                title: Text('Shop by Category'),
+                leading: const Icon(Icons.category),
+                title: const Text('Shop by Category'),
                 onTap: () => onTap(context, 1),
               ),
               ListTile(
-                leading: Icon(Icons.payment),
-                title: Text('My cart'),
-                onTap: () => onTap(context, 0),
-              ),
-              ListTile(
-                leading: Icon(Icons.contact_mail),
-                title: Text('My Wishlist'),
+                leading: const Icon(Icons.payment),
+                title: const Text('My cart'),
                 onTap: () => onTap(context, 2),
               ),
               ListTile(
-                leading: Icon(Icons.help_center),
-                title: Text('Help'),
-                onTap: () => onTap(context, 0),
+                leading: const Icon(Icons.contact_mail),
+                title: const Text('My Wishlist'),
+                onTap: () => onTap(context, 3),
               ),
-              Divider(
+              ListTile(
+                leading: const Icon(Icons.help_center),
+                title: const Text('Help'),
+                onTap: () => onTap(context, 4),
+              ),
+              const Divider(
                 height: 1,
               ),
               ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text('Logout'),
-                onTap: () => onTap(context, 0),
+                leading: const Icon(Icons.exit_to_app),
+                title: const Text('Logout'),
+                onTap: () => onTap(context, 5),
               ),
             ],
           ),
