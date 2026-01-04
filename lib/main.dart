@@ -20,12 +20,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   int index = 0;
   List<Widget> list = [
-    const Home(),
-    const Shopbycategory(),
-    const Mycart(),
-    const MyWishlist(),
-    const Help(),
-    const Logout()
+    Home(),
+    Shopbycategory(),
+    Mycart(),
+    MyWishlist(),
+    Help(),
+    Logout()
   ];
 
   @override
