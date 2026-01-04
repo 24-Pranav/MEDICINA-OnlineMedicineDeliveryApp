@@ -12,13 +12,13 @@ class CreditCard {
   String image;
 
   CreditCard(
-      {this.cardNumber,
-      this.expiryDate,
-      this.cardHolderName,
-      this.cvvCode,
-      this.isCvvFocused,
-      this.color,
-      this.image});
+      {required this.cardNumber,
+      required this.expiryDate,
+      required this.cardHolderName,
+      required this.cvvCode,
+      this.isCvvFocused = false,
+      required this.color,
+      required this.image});
 }
 
 List<CreditCard> creditCards = [
@@ -28,22 +28,19 @@ List<CreditCard> creditCards = [
       cvvCode: "333",
       cardHolderName: "Huynh Cong Tien",
       color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-      image:  R.icon.visaCard
-  ),
+      image: R.icon.visaCard),
   CreditCard(
       cardNumber: "5500 0000 0000 0004",
       expiryDate: "09/22",
       cvvCode: "34",
       cardHolderName: "Malayalam Sangam MN",
       color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-      image: R.icon.masterCard
-  ),
+      image: R.icon.masterCard),
   CreditCard(
       cardNumber: "3400 0000 0000 009",
       expiryDate: "05/15",
       cvvCode: "65",
       cardHolderName: "Gurmukhi MN",
       color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-      image: R.icon.amexCard
-  ),
+      image: R.icon.amexCard),
 ];

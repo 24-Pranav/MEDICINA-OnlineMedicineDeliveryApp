@@ -8,6 +8,8 @@ import 'package:medicina/size_config.dart';
 import '../../../constants.dart';
 
 class Body extends StatelessWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -27,12 +29,12 @@ class Body extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              const Text(
                 "Please enter your email and we will send \n you a link to return to your account",
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: SizeConfig.screenHeight * 0.1),
-              ForgotPasswordForm(),
+              const ForgotPasswordForm(),
             ],
           ),
         ),
@@ -42,6 +44,8 @@ class Body extends StatelessWidget {
 }
 
 class ForgotPasswordForm extends StatefulWidget {
+  const ForgotPasswordForm({Key? key}) : super(key: key);
+
   @override
   _ForgotPasswordFormState createState() => _ForgotPasswordFormState();
 }
@@ -49,7 +53,7 @@ class ForgotPasswordForm extends StatefulWidget {
 class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
   final _formKey = GlobalKey<FormState>();
   List<String> errors = [];
-  String email;
+  String? email;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -65,27 +69,26 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
                   errors.remove(kEmailNullError);
                 });
               } else if (emailValidatorRegExp.hasMatch(value) &&
-                  errors.contains(kEmailNullError)) {
+                  errors.contains(kInvalidEmailError)) {
                 setState(() {
                   errors.remove(kInvalidEmailError);
                 });
               }
-              return null;
             },
             validator: (value) {
-              if (value.isEmpty && !errors.contains(kEmailNullError)) {
+              if (value == null || value.isEmpty && !errors.contains(kEmailNullError)) {
                 setState(() {
                   errors.add(kEmailNullError);
                 });
-              } else if (!emailValidatorRegExp.hasMatch(value) &&
-                  !errors.contains(kEmailNullError)) {
+              } else if (value != null && !emailValidatorRegExp.hasMatch(value) &&
+                  !errors.contains(kInvalidEmailError)) {
                 setState(() {
                   errors.add(kInvalidEmailError);
                 });
               }
               return null;
             },
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: "Email",
               hintText: "Enter your email",
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -98,13 +101,13 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState.validate()) {
+              if (_formKey.currentState!.validate()) {
                 // Do what ypu want to do
               }
             },
           ),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
-          NoAccountText(),
+          const NoAccountText(),
         ],
       ),
     );

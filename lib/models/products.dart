@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+const String description =
+    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";
+
 class Product {
   final int id;
   final String title, description;
@@ -9,15 +12,15 @@ class Product {
   final bool isFavourite, isPopular;
 
   Product({
-    @required this.id,
-    @required this.images,
-    @required this.colors,
+    required this.id,
+    required this.images,
+    required this.colors,
     this.rating = 0.0,
     this.isFavourite = false,
     this.isPopular = false,
-    @required this.title,
-    @required this.price,
-    @required this.description,
+    required this.title,
+    required this.price,
+    required this.description,
   });
 }
 
@@ -30,9 +33,9 @@ List<Product> demoProducts = [
       "assets/images/otcmedicine.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "OTC",
@@ -48,9 +51,9 @@ List<Product> demoProducts = [
       "assets/images/diabities.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "Diabities",
@@ -65,9 +68,9 @@ List<Product> demoProducts = [
       "assets/images/personalcare.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "Personal Care",
@@ -83,9 +86,9 @@ List<Product> demoProducts = [
       "assets/images/babymother.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "Baby Mother",
@@ -100,9 +103,9 @@ List<Product> demoProducts = [
       "assets/images/firstaid.png",
     ],
     colors: [
-      Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "First Aid",
@@ -118,8 +121,8 @@ List<Product> demoProducts = [
     ],
     colors: [
       //Color(0xFFF6625E),
-      Color(0xFF836DB8),
-      Color(0xFFDECB9C),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
       Colors.white,
     ],
     title: "Wellness",
@@ -129,6 +132,3 @@ List<Product> demoProducts = [
     isFavourite: true,
   ),
 ];
-
-const String description =
-    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";

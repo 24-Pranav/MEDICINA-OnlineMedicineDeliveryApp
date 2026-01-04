@@ -1,73 +1,73 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:medicina/components/custom_surffix_icon.dart';
-import 'package:medicina/screens/upload_image/components/body.dart';
+import 'package:medicina/screens/home/home_screen.dart';
 
 class PhoneVerification extends StatefulWidget {
+  const PhoneVerification({Key? key}) : super(key: key);
+
   @override
   _PhoneVerificationState createState() => _PhoneVerificationState();
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
-  String smsCode;
-  String verificationCode;
-  String number;
+  String? smsCode;
+  String? verificationCode;
+  String? number;
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
-                  child: Text(
-                    "Enter your Phone Number",
-                    style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 20,
-                      //fontWeight: FontWeight.bold,
+          child: Column(
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                child: Text(
+                  "Enter your Phone Number",
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+              TextField(
+                onChanged: (val) {
+                  number = val;
+                },
+                decoration: const InputDecoration(
+                  labelText: "Phone Number",
+                  hintText: "Enter your phone number",
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  suffixIcon:
+                      CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 5.0, horizontal: 16.0),
+                margin: const EdgeInsets.only(
+                    top: 30, left: 20.0, right: 20.0, bottom: 20.0),
+                decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      colors: [Colors.orange, Colors.orange],
                     ),
-                  ),
-                ),
-                TextField(
-                  onChanged: (val) {
-                    number = val;
-                  },
-                  decoration: InputDecoration(
-                    labelText: "Phone Number",
-                    hintText: "Enter your phone number",
-                    floatingLabelBehavior: FloatingLabelBehavior.always,
-                    suffixIcon:
-                        CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 5.0, horizontal: 16.0),
-                  margin: const EdgeInsets.only(
-                      top: 30, left: 20.0, right: 20.0, bottom: 20.0),
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [orange, orange],
-                      ),
-                      borderRadius: BorderRadius.circular(20.0)),
-                  child: FlatButton(
-                    onPressed: () {
+                    borderRadius: BorderRadius.circular(20.0)),
+                child: TextButton(
+                  onPressed: () {
+                    if (number != null && number!.isNotEmpty) {
                       _submit();
-                    },
-                    child: Text(
-                      "Send Code",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
+                    }
+                  },
+                  child: const Text(
+                    "Send Code",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -75,37 +75,32 @@ class _PhoneVerificationState extends State<PhoneVerification> {
   }
 
   Future<void> _submit() async {
-    final PhoneVerificationCompleted verificationSuccess =
-        (AuthCredential credential) {
-      setState(() {
-        print("Verification");
-        print(credential);
-      });
-    };
-
-    final PhoneVerificationFailed phoneVerificationFailed =
-        (AuthException exception) {
-      print("${exception.message}");
-    };
-    final PhoneCodeSent phoneCodeSent = (String verId, [int forceCodeResend]) {
-      this.verificationCode = verId;
-      smsCodeDialog(context).then((value) => print("Signed In"));
-    };
-
-    final PhoneCodeAutoRetrievalTimeout autoRetrievalTimeout = (String verId) {
-      this.verificationCode = verId;
-    };
+    if (number == null) return;
 
     await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: this.number,
-        timeout: const Duration(seconds: 5),
-        verificationCompleted: verificationSuccess,
-        verificationFailed: phoneVerificationFailed,
-        codeSent: phoneCodeSent,
-        codeAutoRetrievalTimeout: autoRetrievalTimeout);
+      phoneNumber: number!,
+      timeout: const Duration(seconds: 5),
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await FirebaseAuth.instance.signInWithCredential(credential);
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+            (route) => false);
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        print(e.message);
+      },
+      codeSent: (String verId, int? resendToken) {
+        verificationCode = verId;
+        smsCodeDialog(context);
+      },
+      codeAutoRetrievalTimeout: (String verId) {
+        verificationCode = verId;
+      },
+    );
   }
 
-  Future<bool> smsCodeDialog(BuildContext context) {
+  Future<void> smsCodeDialog(BuildContext context) {
     return showDialog(
         context: context,
         barrierDismissible: false,
@@ -118,48 +113,38 @@ class _PhoneVerificationState extends State<PhoneVerification> {
               ),
             ),
             content: TextField(
-              onChanged: (Value) {
-                smsCode = Value;
+              onChanged: (value) {
+                smsCode = value;
               },
             ),
-            contentPadding: EdgeInsets.all(10),
+            contentPadding: const EdgeInsets.all(10),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                   child: Text(
                     "Verify",
                     style: TextStyle(
                       color: Colors.orange[900],
                     ),
                   ),
-                  onPressed: () {}
-                  //   FirebaseAuth.instance.currentUser().then((user) {
-                  //     if (user != null) {
-                  //       Navigator.of(context).pop();
-                  //       Navigator.push(
-                  //         context,
-                  //         MaterialPageRoute(
-                  //             builder: (context) => HomeScreen()),
-                  //       );
-                  //     } else {
-                  //       Navigator.of(context).pop();
-                  //       signIn();
-                  //     }
-                  //   });
-                  )
+                  onPressed: () async {
+                    try {
+                      PhoneAuthCredential credential =
+                          PhoneAuthProvider.credential(
+                              verificationId: verificationCode!,
+                              smsCode: smsCode!);
+                      await FirebaseAuth.instance
+                          .signInWithCredential(credential);
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()),
+                          (route) => false);
+                    } catch (e) {
+                      print(e);
+                    }
+                  })
             ],
           );
         });
   }
-
-  // // signIn() {
-  // //   AuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
-  // //       verificationId: verificationCode, smsCode: smsCode);
-  // //   FirebaseAuth.instance
-  // //       .signInWithCredential(phoneAuthCredential)
-  // //       // // .then((user) => Navigator.push(
-  // //       // //       context,
-  // //       // //       MaterialPageRoute(builder: (context) => LoginSuccessScreen()),
-  // //       //     ))
-  // //       // .catchError((e) => print(e));
-  // }
 }

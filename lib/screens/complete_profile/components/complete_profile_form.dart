@@ -2,34 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:medicina/components/custom_surffix_icon.dart';
 import 'package:medicina/components/default_button.dart';
 import 'package:medicina/components/form_error.dart';
-import 'package:medicina/screens/otp/otp_screen.dart';
 import 'package:medicina/screens/signup%20success/signup_success_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
+  const CompleteProfileForm({Key? key}) : super(key: key);
+
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
 
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final _formKey = GlobalKey<FormState>();
-  String firstName;
-  String lastName;
-  String phoneNumber;
-  String address;
+  String? firstName;
+  String? lastName;
+  String? phoneNumber;
+  String? address;
 
-  final List<String> errors = [];
+  final List<String?> errors = [];
 
-  void addError({String error}) {
+  void addError({String? error}) {
     if (!errors.contains(error))
       setState(() {
         errors.add(error);
       });
   }
 
-  void removeError({String error}) {
+  void removeError({String? error}) {
     if (errors.contains(error))
       setState(() {
         errors.remove(error);
@@ -54,8 +55,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           DefaultButton(
             text: "Continue",
             press: () {
-              if (_formKey.currentState.validate()) {
-                // Go to OTP Screen
+              if (_formKey.currentState!.validate()) {
                 Navigator.pushNamed(context, SignUpSuccessScreen.routeName);
               }
             },
@@ -70,22 +70,17 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => address = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          setState(() {
-            errors.remove(kAddressNullError);
-          });
+          removeError(error: kAddressNullError);
         }
-        return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
-          setState(() {
-            errors.add(kAddressNullError);
-          });
+        if (value == null || value.isEmpty) {
+          addError(error: kAddressNullError);
           return "";
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Address",
         hintText: "Enter your address",
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -101,22 +96,17 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => phoneNumber = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          setState(() {
-            errors.remove(kPhoneNumberNullError);
-          });
+          removeError(error: kPhoneNumberNullError);
         }
-        return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
-          setState(() {
-            errors.add(kPhoneNumberNullError);
-          });
+        if (value == null || value.isEmpty) {
+          addError(error: kPhoneNumberNullError);
           return "";
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         prefix: Padding(
           padding: EdgeInsets.all(4),
           child: Text('+94'),
@@ -132,25 +122,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildLastNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => firstName = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          setState(() {
-            errors.remove(kNamelNullError);
-          });
-        }
-        return null;
-      },
-      validator: (value) {
-        if (value.isEmpty) {
-          setState(() {
-            errors.add(kNamelNullError);
-          });
-          return "";
-        }
-        return null;
-      },
-      decoration: InputDecoration(
+      onSaved: (newValue) => lastName = newValue,
+      decoration: const InputDecoration(
         labelText: "Last Name",
         hintText: "Enter your last name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -164,22 +137,17 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       onSaved: (newValue) => firstName = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
-          setState(() {
-            errors.remove(kNamelNullError);
-          });
+          removeError(error: kNamelNullError);
         }
-        return null;
       },
       validator: (value) {
-        if (value.isEmpty) {
-          setState(() {
-            errors.add(kNamelNullError);
-          });
+        if (value == null || value.isEmpty) {
+          addError(error: kNamelNullError);
           return "";
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "First Name",
         hintText: "Enter your first name",
         floatingLabelBehavior: FloatingLabelBehavior.always,

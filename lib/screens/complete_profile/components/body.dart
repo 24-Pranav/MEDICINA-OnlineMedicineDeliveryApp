@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:medicina/components/custom_surffix_icon.dart';
-import 'package:medicina/components/default_button.dart';
-import 'package:medicina/components/form_error.dart';
 import 'package:medicina/constants.dart';
 import 'package:medicina/size_config.dart';
 
 import 'complete_profile_form.dart';
 
 class Body extends StatelessWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -22,14 +21,10 @@ class Body extends StatelessWidget {
                 'Complete Profile',
                 style: headingStyle,
               ),
-              // Text(
-              //   "Complete your details or continue \n with social media",
-              //   textAlign: TextAlign.center,
-              // ),
               SizedBox(height: SizeConfig.screenHeight * 0.05),
-              CompleteProfileForm(),
+              const CompleteProfileForm(),
               SizedBox(height: getProportionateScreenHeight(25)),
-              Text(
+              const Text(
                 "By creating an account, you agree to the MEDICINA \n Terms of Service and Privacy Policy.",
                 textAlign: TextAlign.center,
               ),
