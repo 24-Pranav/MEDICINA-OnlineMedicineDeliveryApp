@@ -17,13 +17,13 @@ class Body extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.05),
+              SizedBox(height: SizeConfig.screenHeight! * 0.05),
               Text("OTP Verification", style: headingStyle),
               const Text("We sent your 6 digit code to your mobile phone!"),
               buildTimer(),
-              SizedBox(height: SizeConfig.screenHeight * 0.15),
+              SizedBox(height: SizeConfig.screenHeight! * 0.15),
               const OtpForm(),
-              SizedBox(height: SizeConfig.screenHeight * 0.1), // 10%
+              SizedBox(height: SizeConfig.screenHeight! * 0.1), // 10%
               GestureDetector(
                 onTap: () {
                   // resend your OTP

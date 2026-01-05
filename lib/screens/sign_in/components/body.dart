@@ -24,7 +24,7 @@ class _BodyState extends State<Body> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.04),
+                SizedBox(height: SizeConfig.screenHeight! * 0.04),
                 Text(
                   "Welcome Back",
                   style: TextStyle(
@@ -37,9 +37,9 @@ class _BodyState extends State<Body> {
                   "Sign in with your email and password \nor continue with social media",
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.screenHeight! * 0.08),
                 const SignForm(),
-                SizedBox(height: SizeConfig.screenHeight * 0.08),
+                SizedBox(height: SizeConfig.screenHeight! * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

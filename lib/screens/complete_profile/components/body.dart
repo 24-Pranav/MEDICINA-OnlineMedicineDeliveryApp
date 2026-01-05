@@ -21,7 +21,7 @@ class Body extends StatelessWidget {
                 'Complete Profile',
                 style: headingStyle,
               ),
-              SizedBox(height: SizeConfig.screenHeight * 0.05),
+              SizedBox(height: SizeConfig.screenHeight! * 0.05),
               const CompleteProfileForm(),
               SizedBox(height: getProportionateScreenHeight(25)),
               const Text(

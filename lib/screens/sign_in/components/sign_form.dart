@@ -96,7 +96,7 @@ class _SignFormState extends State<SignForm> {
       validator: (value) {
         removeError(error: kPassNullError);
         removeError(error: kShortPassError);
-        if (value!.isEmpty) {
+        if (value == null || value.isEmpty) {
           addError(error: kPassNullError);
           return "";
         } else if (value.length < 8) {
@@ -122,10 +122,10 @@ class _SignFormState extends State<SignForm> {
       validator: (value) {
         removeError(error: kEmailNullError);
         removeError(error: kInvalidEmailError);
-        if (value!.isEmpty) {
+        if (value == null || value.isEmpty) {
           addError(error: kEmailNullError);
           return "";
-        } else if (!emailValidatorRegExp..hasMatch(value)) {
+        } else if (!emailValidatorRegExp.hasMatch(value)) {
           addError(error: kInvalidEmailError);
           return "";
         }

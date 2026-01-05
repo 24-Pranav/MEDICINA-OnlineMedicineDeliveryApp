@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medicina/components/default_button.dart';
+import 'package:medicina/screens/login_success/login_success_screen.dart';
 
 import '../../../size_config.dart';
 
@@ -162,10 +163,12 @@ class _OtpFormState extends State<OtpForm> {
               ),
             ],
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.15),
+          SizedBox(height: SizeConfig.screenHeight! * 0.15),
           DefaultButton(
             text: "Continue",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+            },
           ),
         ],
       ),

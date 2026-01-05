@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.04),
+              SizedBox(height: SizeConfig.screenHeight! * 0.04),
               Text(
                 "Forgot Password",
                 style: TextStyle(
@@ -33,7 +33,7 @@ class Body extends StatelessWidget {
                 "Please enter your email and we will send \n you a link to return to your account",
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: SizeConfig.screenHeight * 0.1),
+              SizedBox(height: SizeConfig.screenHeight! * 0.1),
               const ForgotPasswordForm(),
             ],
           ),
@@ -101,7 +101,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
           ),
           SizedBox(height: getProportionateScreenHeight(30)),
           FormError(key: UniqueKey(), errors: errors),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(height: SizeConfig.screenHeight! * 0.1),
           DefaultButton(
             text: "Continue",
             press: () {
@@ -111,7 +111,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
               }
             },
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.1),
+          SizedBox(height: SizeConfig.screenHeight! * 0.1),
           const NoAccountText(),
         ],
       ),
