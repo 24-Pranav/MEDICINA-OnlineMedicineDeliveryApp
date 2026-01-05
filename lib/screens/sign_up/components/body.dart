@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:medicina/components/custom_surffix_icon.dart';
-import 'package:medicina/components/default_button.dart';
-import 'package:medicina/components/form_error.dart';
 import 'package:medicina/components/social_card.dart';
 import 'package:medicina/constants.dart';
 import 'package:medicina/size_config.dart';
@@ -10,6 +6,8 @@ import 'package:medicina/size_config.dart';
 import 'sign_up_form.dart';
 
 class Body extends StatelessWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,13 +22,13 @@ class Body extends StatelessWidget {
                 "Register Account",
                 style: headingStyle,
               ),
-              Text(
+              const Text(
                 "Complete your details or continue \n with social media",
                 textAlign: TextAlign.center,
               ),
               SizedBox(
                   height: SizeConfig.screenHeight * 0.05), // 8% of total height
-              SignUpForm(),
+              const SignUpForm(),
               SizedBox(height: SizeConfig.screenHeight * 0.07),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

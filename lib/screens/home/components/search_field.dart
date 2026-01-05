@@ -13,7 +13,7 @@ class SearchField extends StatelessWidget {
       width: SizeConfig.screenWidth * 0.6, // 60%
       height: 50,
       decoration: BoxDecoration(
-        color: kSecondaryColor.withOpacity(0.1),
+        color: kSecondaryColor.withAlpha(25),
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(

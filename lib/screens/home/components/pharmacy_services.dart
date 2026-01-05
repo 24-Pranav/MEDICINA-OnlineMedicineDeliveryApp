@@ -4,7 +4,7 @@ import '../../../size_config.dart';
 
 class PharmacyServices extends StatelessWidget {
   const PharmacyServices({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -53,10 +53,10 @@ class PharmacyServices extends StatelessWidget {
 
 class PharmacyCard extends StatelessWidget {
   const PharmacyCard({
-    Key key,
-    @required this.category,
-    @required this.image,
-    @required this.press,
+    Key? key,
+    required this.category,
+    required this.image,
+    required this.press,
   }) : super(key: key);
 
   final String category, image;
@@ -83,8 +83,8 @@ class PharmacyCard extends StatelessWidget {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0XFF343434).withOpacity(0.4),
-                        Color(0XFF343434).withOpacity(0.15),
+                        const Color(0XFF343434).withAlpha(102),
+                        const Color(0XFF343434).withAlpha(38),
                       ]),
                 ),
               ),
@@ -95,10 +95,10 @@ class PharmacyCard extends StatelessWidget {
                 ),
                 child: Text.rich(
                   TextSpan(
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                     children: [
                       TextSpan(
-                        text: "$category",
+                        text: category,
                         style: TextStyle(
                           fontSize: getProportionateScreenWidth(12),
                           fontWeight: FontWeight.bold,
@@ -118,9 +118,9 @@ class PharmacyCard extends StatelessWidget {
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({
-    Key key,
-    @required this.text,
-    @required this.press,
+    Key? key,
+    required this.text,
+    required this.press,
   }) : super(key: key);
 
   final String text;
@@ -141,7 +141,7 @@ class SectionTitle extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          GestureDetector(onTap: press, child: Text("See More")),
+          GestureDetector(onTap: press, child: const Text("See More")),
         ],
       ),
     );

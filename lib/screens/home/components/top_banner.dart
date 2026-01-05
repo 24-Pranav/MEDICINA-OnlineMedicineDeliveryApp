@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:medicina/components/default_button.dart';
-import 'package:medicina/constants.dart';
 import 'package:medicina/screens/upload_image/upload_image_screen.dart';
 
 import '../../../size_config.dart';
 
 class TopBanner extends StatelessWidget {
   const TopBanner({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -19,13 +17,13 @@ class TopBanner extends StatelessWidget {
       ),
       width: double.infinity,
       // height: 120,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.orange,
       ),
       child: Column(
         children: [
           Row(
-            children: [
+            children: const [
               Text.rich(
                 TextSpan(
                   text: "Prescripiton Services \n",
@@ -44,16 +42,18 @@ class TopBanner extends StatelessWidget {
               ),
             ],
           ),
-          Text(
+          const Text(
             "Upload your prescription here",
             style: TextStyle(color: Colors.white, fontSize: 15),
           ),
-          RaisedButton(
-            color: Colors.orange,
-            elevation: 10,
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange,
+              elevation: 10,
+            ),
             onPressed: () =>
                 Navigator.pushNamed(context, UploadImageScreen.routeName),
-            child: Text("Upload"),
+            child: const Text("Upload"),
           ),
         ],
       ),

@@ -28,7 +28,7 @@ class IconBtnWithCounter extends StatelessWidget {
             height: getProportionateScreenWidth(46),
             width: getProportionateScreenWidth(46),
             decoration: BoxDecoration(
-              color: kSecondaryColor.withOpacity(0.1),
+              color: kSecondaryColor.withAlpha(25),
               shape: BoxShape.circle,
             ),
             child: SvgPicture.asset(svgSrc),
