@@ -8,21 +8,20 @@ import 'package:path/path.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Firebase Storage',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: UploadingImageToFirebaseStorage(),
     );
   }
 }
 
-final Color yellow = Color(0xfffbc31b);
-final Color orange = Color(0xfffb6900);
+const Color yellow = Color(0xfffbc31b);
+const Color orange = Color(0xfffb6900);
 
 class UploadingImageToFirebaseStorage extends StatefulWidget {
+  const UploadingImageToFirebaseStorage({Key? key}) : super(key: key);
+
   @override
   _UploadingImageToFirebaseStorageState createState() =>
       _UploadingImageToFirebaseStorageState();
@@ -30,30 +29,29 @@ class UploadingImageToFirebaseStorage extends StatefulWidget {
 
 class _UploadingImageToFirebaseStorageState
     extends State<UploadingImageToFirebaseStorage> {
-  File _imageFile;
+  late File _imageFile;
 
   final picker = ImagePicker();
 
   Future pickImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-    setState(() {
-      _imageFile = File(pickedFile.path);
-    });
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+    }
   }
 
   Future uploadImageToFirebase(BuildContext context) async {
     String fileName = basename(_imageFile.path);
-    StorageReference firebaseStorageRef =
+    Reference firebaseStorageRef =
         FirebaseStorage.instance.ref().child('uploads/$fileName');
-    StorageUploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
-    // ignore: unused_local_variable
-    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-    setState(() {
-      print("Your prescription successfully uploaded");
-      Scaffold.of(context).showSnackBar(
-          SnackBar(content: Text('Your prescription uploaded successfully')));
-    });
+    UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
+    TaskSnapshot taskSnapshot = await uploadTask;
+    taskSnapshot.ref.getDownloadURL().then(
+          (value) => print("Done: $value"),
+        );
   }
 
   @override
@@ -63,7 +61,7 @@ class _UploadingImageToFirebaseStorageState
         children: <Widget>[
           Container(
             height: 300,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(50.0),
                     bottomRight: Radius.circular(50.0)),
@@ -76,8 +74,8 @@ class _UploadingImageToFirebaseStorageState
             margin: const EdgeInsets.only(top: 20),
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text.rich(
                     TextSpan(
                       text: "Please upload your prescription \n\n ",
@@ -98,7 +96,7 @@ class _UploadingImageToFirebaseStorageState
                     ),
                   ),
                 ),
-                SizedBox(height: 20.0),
+                const SizedBox(height: 20.0),
                 Expanded(
                   child: Stack(
                     children: <Widget>[
@@ -110,8 +108,8 @@ class _UploadingImageToFirebaseStorageState
                           borderRadius: BorderRadius.circular(20.0),
                           child: _imageFile != null
                               ? Image.file(_imageFile)
-                              : FlatButton(
-                                  child: Icon(
+                              : TextButton(
+                                  child: const Icon(
                                     Icons.add_a_photo,
                                     size: 50,
                                   ),
@@ -141,13 +139,13 @@ class _UploadingImageToFirebaseStorageState
             margin: const EdgeInsets.only(
                 top: 30, left: 20.0, right: 20.0, bottom: 20.0),
             decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [orange, orange],
                 ),
                 borderRadius: BorderRadius.circular(20.0)),
-            child: FlatButton(
+            child: TextButton(
               onPressed: () => uploadImageToFirebase(context),
-              child: Text(
+              child: const Text(
                 "Upload Image",
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),

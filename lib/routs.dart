@@ -14,15 +14,15 @@ import 'package:medicina/screens/upload_image/upload_image_screen.dart';
 // We use name route
 // All our routes will be available in here
 final Map<String, WidgetBuilder> routes = {
-  SplashScreen.routeName: (context) => const SplashScreen(),
-  SignInScreen.routeName: (context) => const SignInScreen(),
-  ForgotPasswordScreen.routeName: (context) => const ForgotPasswordScreen(),
-  LoginSuccessScreen.routeName: (context) => const LoginSuccessScreen(),
-  SignUpScreen.routeName: (context) => const SignUpScreen(),
-  CompleteProfileScreen.routeName: (context) => const CompleteProfileScreen(),
-  HomeScreen.routeName: (context) => const HomeScreen(),
-  UploadImageScreen.routeName: (context) => const UploadImageScreen(),
-  OtpScreen.routeName: (context) => const OtpScreen(),
+  SplashScreen.routeName: (context) => SplashScreen(),
+  SignInScreen.routeName: (context) => SignInScreen(),
+  ForgotPasswordScreen.routeName: (context) => ForgotPasswordScreen(),
+  LoginSuccessScreen.routeName: (context) => LoginSuccessScreen(),
+  SignUpScreen.routeName: (context) => SignUpScreen(),
+  CompleteProfileScreen.routeName: (context) => CompleteProfileScreen(),
+  HomeScreen.routeName: (context) => HomeScreen(),
+  UploadImageScreen.routeName: (context) => UploadImageScreen(),
+  OtpScreen.routeName: (context) => OtpScreen(),
   SignUpSuccessScreen.routeName: (context) => const SignUpSuccessScreen(),
-  AuthScreen.routeName: (context) => const AuthScreen(),
+  AuthScreen.routeName: (context) => AuthScreen(),
 };

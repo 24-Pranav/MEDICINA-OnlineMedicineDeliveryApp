@@ -20,10 +20,10 @@ class _SignFormState extends State<SignForm> {
   String? email;
   String? password;
   bool remember = false;
-  final List<String?> errors = [];
+  final List<String> errors = [];
 
   void addError({String? error}) {
-    if (!errors.contains(error)) {
+    if (error != null && !errors.contains(error)) {
       setState(() {
         errors.add(error);
       });
@@ -31,7 +31,7 @@ class _SignFormState extends State<SignForm> {
   }
 
   void removeError({String? error}) {
-    if (errors.contains(error)) {
+    if (error != null && errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
@@ -125,7 +125,7 @@ class _SignFormState extends State<SignForm> {
         if (value!.isEmpty) {
           addError(error: kEmailNullError);
           return "";
-        } else if (!emailValidatorRegExp.hasMatch(value)) {
+        } else if (!emailValidatorRegExp..hasMatch(value)) {
           addError(error: kInvalidEmailError);
           return "";
         }
