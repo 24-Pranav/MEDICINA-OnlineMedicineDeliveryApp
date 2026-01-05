@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'components/body.dart';
 
 class SignUpSuccessScreen extends StatelessWidget {
+  const SignUpSuccessScreen({Key? key}) : super(key: key);
   static String routeName = "/signup_success";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: SizedBox(),
-        // title: Text("Sign Up Success"),
+        leading: const SizedBox(),
+        title: const Text("Sign Up Success"),
       ),
-      body: Body(),
+      body: const Body(),
     );
   }
 }

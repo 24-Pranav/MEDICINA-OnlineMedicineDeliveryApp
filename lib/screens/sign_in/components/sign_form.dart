@@ -61,8 +61,8 @@ class _SignFormState extends State<SignForm> {
               ),
               const Text("Remember me"),
               const Spacer(),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(
+              TextButton(
+                onPressed: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
                 child: const Text(
                   "Forgot Password",
@@ -92,14 +92,10 @@ class _SignFormState extends State<SignForm> {
     return TextFormField(
       obscureText: true,
       onSaved: (newValue) => password = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kPassNullError);
-        } else if (value.length >= 8) {
-          removeError(error: kShortPassError);
-        }
-      },
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
+        removeError(error: kPassNullError);
+        removeError(error: kShortPassError);
         if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
@@ -122,14 +118,10 @@ class _SignFormState extends State<SignForm> {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
-      onChanged: (value) {
-        if (value.isNotEmpty) {
-          removeError(error: kEmailNullError);
-        } else if (emailValidatorRegExp.hasMatch(value)) {
-          removeError(error: kInvalidEmailError);
-        }
-      },
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (value) {
+        removeError(error: kEmailNullError);
+        removeError(error: kInvalidEmailError);
         if (value!.isEmpty) {
           addError(error: kEmailNullError);
           return "";

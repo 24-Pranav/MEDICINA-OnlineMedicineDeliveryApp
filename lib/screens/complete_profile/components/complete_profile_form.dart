@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medicina/components/custom_surffix_icon.dart';
 import 'package:medicina/components/default_button.dart';
 import 'package:medicina/components/form_error.dart';
-import 'package:medicina/screens/signup%20success/signup_success_screen.dart';
+import 'package:medicina/screens/signup_success/signup_success_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -94,7 +94,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.phone,
       onSaved: (newValue) => phoneNumber = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -109,17 +109,12 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         return null;
       },
       decoration: const InputDecoration(
-        prefix: Padding(
-          padding: EdgeInsets.all(4),
-          child: Text('+94'),
-        ),
         labelText: "Phone Number",
         hintText: "Enter your phone number",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: CustomSurffixIcon(
             key: Key("phone"), svgIcon: "assets/icons/Phone.svg"),
       ),
-      maxLength: 10,
     );
   }
 
