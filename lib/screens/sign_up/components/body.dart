@@ -27,9 +27,9 @@ class Body extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                  height: SizeConfig.screenHeight * 0.05), // 8% of total height
+                  height: SizeConfig.screenHeight! * 0.05), // 8% of total height
               const SignUpForm(),
-              SizedBox(height: SizeConfig.screenHeight * 0.07),
+              SizedBox(height: SizeConfig.screenHeight! * 0.07),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
