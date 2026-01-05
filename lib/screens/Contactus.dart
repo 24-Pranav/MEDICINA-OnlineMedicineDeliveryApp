@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
-class ContactusScreen extends StatefulWidget {
+class ContactusScreen extends StatelessWidget {
   const ContactusScreen({super.key});
 
-  @override
-  State<ContactusScreen> createState() => _ContactusScreenState();
-}
-
-class _ContactusScreenState extends State<ContactusScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,8 +25,8 @@ class _ContactusScreenState extends State<ContactusScreen> {
             padding: const EdgeInsets.only(top: 0.0, left: 24.0, right: 24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
-                Padding(
+              children: <Widget>[
+                const Padding(
                   padding: EdgeInsets.only(bottom: 16.0),
                   child: Text(
                     'Contact Us',
@@ -43,7 +38,7 @@ class _ContactusScreenState extends State<ContactusScreen> {
                 ),
                 Flexible(
                   child: ListView(
-                    children: <Widget>[
+                    children: const <Widget>[
                       Text(
                         'Slmedicinadelivery@gmail.com',
                         style: TextStyle(

@@ -16,10 +16,10 @@ class CompleteProfileForm extends StatefulWidget {
 
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final _formKey = GlobalKey<FormState>();
-  String? firstName;
-  String? lastName;
-  String? phoneNumber;
-  String? address;
+  String firstName = "";
+  String lastName = "";
+  String phoneNumber = "";
+  String address = "";
 
   final List<String> errors = [];
 
@@ -52,7 +52,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           buildPhoneNumberFormField(),
           SizedBox(height: getProportionateScreenHeight(30)),
           buildAddressFormField(),
-          FormError(errors: errors),
+          FormError(key: UniqueKey(), errors: errors),
           SizedBox(height: getProportionateScreenHeight(40)),
           DefaultButton(
             text: "Continue",
@@ -69,7 +69,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildAddressFormField() {
     return TextFormField(
-      onSaved: (newValue) => address = newValue,
+      onSaved: (newValue) => address = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kAddressNullError);
@@ -82,12 +82,12 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Address",
         hintText: "Enter your address",
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon:
-            CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+            CustomSurffixIcon(key: Key("address"), svgIcon: "assets/icons/Location point.svg"),
       ),
     );
   }
@@ -95,7 +95,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
       keyboardType: TextInputType.number,
-      onSaved: (newValue) => phoneNumber = newValue,
+      onSaved: (newValue) => phoneNumber = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPhoneNumberNullError);
@@ -108,15 +108,15 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
-        prefix: const Padding(
+      decoration: const InputDecoration(
+        prefix: Padding(
           padding: EdgeInsets.all(4),
           child: Text('+94'),
         ),
         labelText: "Phone Number",
         hintText: "Enter your phone number",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+        suffixIcon: CustomSurffixIcon(key: Key("phone"), svgIcon: "assets/icons/Phone.svg"),
       ),
       maxLength: 10,
     );
@@ -124,19 +124,19 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildLastNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => lastName = newValue,
-      decoration: InputDecoration(
+      onSaved: (newValue) => lastName = newValue!,
+      decoration: const InputDecoration(
         labelText: "Last Name",
         hintText: "Enter your last name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon(key: Key("last_name"), svgIcon: "assets/icons/User.svg"),
       ),
     );
   }
 
   TextFormField buildFirstNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => firstName = newValue,
+      onSaved: (newValue) => firstName = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kNamelNullError);
@@ -149,11 +149,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "First Name",
         hintText: "Enter your first name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
+        suffixIcon: CustomSurffixIcon(key: Key("first_name"), svgIcon: "assets/icons/User.svg"),
       ),
     );
   }

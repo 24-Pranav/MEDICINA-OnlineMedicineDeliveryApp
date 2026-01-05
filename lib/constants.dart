@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 import 'size_config.dart';
@@ -34,18 +32,3 @@ const String kMatchPassError = "Passwords don't match";
 const String kNamelNullError = "Please Enter your name";
 const String kPhoneNumberNullError = "Please Enter your phone number";
 const String kAddressNullError = "Please Enter your address";
-
-final otpInputDecoration = InputDecoration(
-  contentPadding:
-      EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
-  enabledBorder: outlineInputBorder(),
-  focusedBorder: outlineInputBorder(),
-  border: outlineInputBorder(),
-);
-
-OutlineInputBorder outlineInputBorder() {
-  return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(15),
-    borderSide: BorderSide(color: kPrimaryColor),
-  );
-}

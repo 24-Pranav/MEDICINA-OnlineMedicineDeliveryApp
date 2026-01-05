@@ -29,7 +29,7 @@ class ProductCard extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(getProportionateScreenWidth(20)),
                 decoration: BoxDecoration(
-                  color: kSecondaryColor.withOpacity(0.1),
+                  color: const Color.fromRGBO(151, 151, 151, 0.1),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Image.asset(
@@ -40,7 +40,7 @@ class ProductCard extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               product.title,
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
               maxLines: 2,
             ),
             Row(
@@ -63,13 +63,13 @@ class ProductCard extends StatelessWidget {
                     height: getProportionateScreenWidth(28),
                     decoration: BoxDecoration(
                       color: product.isFavourite
-                          ? kPrimaryColor.withOpacity(0.15)
-                          : kPrimaryColor.withOpacity(0.1),
+                          ? const Color.fromRGBO(255, 118, 67, 0.15)
+                          : const Color.fromRGBO(255, 118, 67, 0.1),
                       shape: BoxShape.circle,
                     ),
                     child: SvgPicture.asset(
                       "assets/icons/Heart Icon_2.svg",
-                      colorFilter: ColorFilter.mode(
+                      colorFilter: const ColorFilter.mode(
                         Color(0XFFFF4848),
                         BlendMode.srcIn
                       ),

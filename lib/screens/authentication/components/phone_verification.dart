@@ -41,8 +41,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                   labelText: "Phone Number",
                   hintText: "Enter your phone number",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
-                  suffixIcon:
-                      CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+                  suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
                 ),
               ),
               Container(

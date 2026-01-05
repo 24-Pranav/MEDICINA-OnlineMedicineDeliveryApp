@@ -11,7 +11,14 @@ import 'package:medicina/size_config.dart';
 
 import 'sign_form.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,32 +39,35 @@ class Body extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
+                const Text(
                   "Sign in with your email and password \n or social media",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
-                SignForm(),
+                const SignForm(key: Key("sign_form")),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SocialCard(
+                      key: const Key("google"),
                       icon: "assets/icons/google-icon.svg",
                       press: () {},
                     ),
                     SocialCard(
+                      key: const Key("facebook"),
                       icon: "assets/icons/facebook-2.svg",
                       press: () {},
                     ),
                     SocialCard(
+                      key: const Key("twitter"),
                       icon: "assets/icons/twitter.svg",
                       press: () {},
                     ),
                   ],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
-                NoAccountText(),
+                const NoAccountText(key: Key("no_account_text")),
               ],
             ),
           ),

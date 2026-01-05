@@ -19,9 +19,9 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  String? email;
-  String? password;
-  bool? remember = false;
+  String email = '';
+  String password = '';
+  bool remember = false;
   final List<String> errors = [];
 
   void addError({String? error}) {
@@ -57,7 +57,7 @@ class _SignFormState extends State<SignForm> {
                 activeColor: kPrimaryColor,
                 onChanged: (value) {
                   setState(() {
-                    remember = value;
+                    remember = value!;
                   });
                 },
               ),
@@ -73,7 +73,7 @@ class _SignFormState extends State<SignForm> {
               ),
             ],
           ),
-          FormError(errors: errors),
+          FormError(key: UniqueKey(), errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
@@ -93,7 +93,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => password = newValue,
+      onSaved: (newValue) => password = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
@@ -103,10 +103,10 @@ class _SignFormState extends State<SignForm> {
         return;
       },
       validator: (value) {
-        if (value == null || value.isEmpty) {
+        if ((value == null || value.isEmpty) && !errors.contains(kPassNullError)) {
           addError(error: kPassNullError);
           return "";
-        } else if (value.length < 8) {
+        } else if (value != null && value.length < 8 && !errors.contains(kShortPassError)) {
           addError(error: kShortPassError);
           return "";
         }
@@ -116,7 +116,7 @@ class _SignFormState extends State<SignForm> {
         labelText: "Password",
         hintText: "Enter your password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: CustomSurffixIcon(key: Key("password"), svgIcon: "assets/icons/Lock.svg"),
       ),
     );
   }
@@ -124,7 +124,7 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue,
+      onSaved: (newValue) => email = newValue!,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
@@ -134,10 +134,10 @@ class _SignFormState extends State<SignForm> {
         return;
       },
       validator: (value) {
-        if (value == null || value.isEmpty) {
+        if ((value == null || value.isEmpty) && !errors.contains(kEmailNullError)) {
           addError(error: kEmailNullError);
           return "";
-        } else if (!emailValidatorRegExp.hasMatch(value)) {
+        } else if (value != null && !emailValidatorRegExp.hasMatch(value) && !errors.contains(kInvalidEmailError)) {
           addError(error: kInvalidEmailError);
           return "";
         }
@@ -145,9 +145,9 @@ class _SignFormState extends State<SignForm> {
       },
       decoration: const InputDecoration(
         labelText: "Email",
-        hinttext: "Enter your email",
+        hintText: "Enter your email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+        suffixIcon: CustomSurffixIcon(key: Key("email"), svgIcon: "assets/icons/Mail.svg"),
       ),
     );
   }

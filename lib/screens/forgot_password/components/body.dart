@@ -53,7 +53,7 @@ class ForgotPasswordForm extends StatefulWidget {
 class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
   final _formKey = GlobalKey<FormState>();
   List<String> errors = [];
-  String? email;
+  String email = '';
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -62,7 +62,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
         children: [
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            onSaved: (newValue) => email = newValue,
+            onSaved: (newValue) => email = newValue!,
             onChanged: (value) {
               if (value.isNotEmpty && errors.contains(kEmailNullError)) {
                 setState(() {
@@ -74,13 +74,16 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
                   errors.remove(kInvalidEmailError);
                 });
               }
+              return;
             },
             validator: (value) {
-              if (value == null || value.isEmpty && !errors.contains(kEmailNullError)) {
+              if ((value == null || value.isEmpty) &&
+                  !errors.contains(kEmailNullError)) {
                 setState(() {
                   errors.add(kEmailNullError);
                 });
-              } else if (value != null && !emailValidatorRegExp.hasMatch(value) &&
+              } else if (value != null &&
+                  !emailValidatorRegExp.hasMatch(value) &&
                   !errors.contains(kInvalidEmailError)) {
                 setState(() {
                   errors.add(kInvalidEmailError);
@@ -92,16 +95,18 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
               labelText: "Email",
               hintText: "Enter your email",
               floatingLabelBehavior: FloatingLabelBehavior.always,
-              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+              suffixIcon:
+                  CustomSurffixIcon(key: Key("email"), svgIcon: "assets/icons/Mail.svg"),
             ),
           ),
           SizedBox(height: getProportionateScreenHeight(30)),
-          FormError(errors: errors),
+          FormError(key: UniqueKey(), errors: errors),
           SizedBox(height: SizeConfig.screenHeight * 0.1),
           DefaultButton(
             text: "Continue",
             press: () {
               if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
                 // Do what ypu want to do
               }
             },
