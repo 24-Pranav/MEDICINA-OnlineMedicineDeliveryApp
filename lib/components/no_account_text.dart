@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:medicina/screens/forgot_password/forgot_password_Screen.dart';
 import 'package:medicina/screens/sign_up/sign_up_screen.dart';
 
 import '../constants.dart';
@@ -7,7 +6,7 @@ import '../size_config.dart';
 
 class NoAccountText extends StatelessWidget {
   const NoAccountText({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

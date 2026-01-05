@@ -5,16 +5,18 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class OtpForm extends StatefulWidget {
+  const OtpForm({Key? key}) : super(key: key);
+
   @override
   _OtpFormState createState() => _OtpFormState();
 }
 
 class _OtpFormState extends State<OtpForm> {
-  FocusNode pin2FocusNode;
-  FocusNode pin3FocusNode;
-  FocusNode pin4FocusNode;
-  FocusNode pin5FocusNode;
-  FocusNode pin6FocusNode;
+  FocusNode? pin2FocusNode;
+  FocusNode? pin3FocusNode;
+  FocusNode? pin4FocusNode;
+  FocusNode? pin5FocusNode;
+  FocusNode? pin6FocusNode;
 
   @override
   void initState() {
@@ -28,15 +30,17 @@ class _OtpFormState extends State<OtpForm> {
 
   @override
   void dispose() {
-    pin2FocusNode.dispose();
-    pin3FocusNode.dispose();
-    pin4FocusNode.dispose();
+    pin2FocusNode?.dispose();
+    pin3FocusNode?.dispose();
+    pin4FocusNode?.dispose();
+    pin5FocusNode?.dispose();
+    pin6FocusNode?.dispose();
     super.dispose();
   }
 
-  void nextField({String value, FocusNode focusNode}) {
-    if (value.length == 1) {
-      focusNode.requestFocus();
+  void nextField({String? value, FocusNode? focusNode}) {
+    if (value != null && value.length == 1) {
+      focusNode?.requestFocus();
     }
   }
 
@@ -54,9 +58,13 @@ class _OtpFormState extends State<OtpForm> {
                   autofocus: true,
                   obscureText: true,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    border: OutlineInputBorder(),
+                    hintText: "0",
+                  ),
                   onChanged: (value) {
                     // also you need to store your value
                     nextField(value: value, focusNode: pin2FocusNode);
@@ -69,9 +77,13 @@ class _OtpFormState extends State<OtpForm> {
                   focusNode: pin2FocusNode,
                   obscureText: true,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    border: OutlineInputBorder(),
+                    hintText: "0",
+                  ),
                   onChanged: (value) {
                     nextField(value: value, focusNode: pin3FocusNode);
                   },
@@ -83,9 +95,13 @@ class _OtpFormState extends State<OtpForm> {
                   focusNode: pin3FocusNode,
                   obscureText: true,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    border: OutlineInputBorder(),
+                    hintText: "0",
+                  ),
                   onChanged: (value) {
                     nextField(value: value, focusNode: pin4FocusNode);
                   },
@@ -97,9 +113,13 @@ class _OtpFormState extends State<OtpForm> {
                   focusNode: pin4FocusNode,
                   obscureText: true,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    border: OutlineInputBorder(),
+                    hintText: "0",
+                  ),
                   onChanged: (value) {
                     nextField(value: value, focusNode: pin5FocusNode);
                   },
@@ -111,9 +131,13 @@ class _OtpFormState extends State<OtpForm> {
                   focusNode: pin5FocusNode,
                   obscureText: true,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    border: OutlineInputBorder(),
+                    hintText: "0",
+                  ),
                   onChanged: (value) {
                     nextField(value: value, focusNode: pin6FocusNode);
                   },
@@ -125,11 +149,15 @@ class _OtpFormState extends State<OtpForm> {
                   focusNode: pin6FocusNode,
                   obscureText: true,
                   keyboardType: TextInputType.number,
-                  style: TextStyle(fontSize: 24),
+                  style: const TextStyle(fontSize: 24),
                   textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(vertical: 15),
+                    border: OutlineInputBorder(),
+                    hintText: "0",
+                  ),
                   onChanged: (value) {
-                    pin6FocusNode.unfocus();
+                    pin6FocusNode?.unfocus();
                   },
                 ),
               ),

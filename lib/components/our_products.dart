@@ -7,7 +7,7 @@ import '../size_config.dart';
 
 class OurProducts extends StatelessWidget {
   const OurProducts({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

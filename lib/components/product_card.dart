@@ -7,10 +7,10 @@ import '../size_config.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
-    Key key,
+    Key? key,
     this.width = 100,
     this.aspectRection = 1.02,
-    this.product,
+    required this.product,
   }) : super(key: key);
 
   final double width, aspectRection;
@@ -69,9 +69,10 @@ class ProductCard extends StatelessWidget {
                     ),
                     child: SvgPicture.asset(
                       "assets/icons/Heart Icon_2.svg",
-                      color: product.isFavourite
-                          ? Color(0XFFFF4848)
-                          : Color(0XFFFF4848),
+                      colorFilter: ColorFilter.mode(
+                        Color(0XFFFF4848),
+                        BlendMode.srcIn
+                      ),
                     ),
                   ),
                 ),

@@ -21,20 +21,22 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String? phoneNumber;
   String? address;
 
-  final List<String?> errors = [];
+  final List<String> errors = [];
 
   void addError({String? error}) {
-    if (!errors.contains(error))
+    if (error != null && !errors.contains(error)) {
       setState(() {
         errors.add(error);
       });
+    }
   }
 
   void removeError({String? error}) {
-    if (errors.contains(error))
+    if (error != null && errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
+    }
   }
 
   @override
@@ -80,7 +82,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: "Address",
         hintText: "Enter your address",
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -106,8 +108,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
-        prefix: Padding(
+      decoration: InputDecoration(
+        prefix: const Padding(
           padding: EdgeInsets.all(4),
           child: Text('+94'),
         ),
@@ -123,7 +125,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   TextFormField buildLastNameFormField() {
     return TextFormField(
       onSaved: (newValue) => lastName = newValue,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: "Last Name",
         hintText: "Enter your last name",
         floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -147,7 +149,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
         }
         return null;
       },
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: "First Name",
         hintText: "Enter your first name",
         floatingLabelBehavior: FloatingLabelBehavior.always,

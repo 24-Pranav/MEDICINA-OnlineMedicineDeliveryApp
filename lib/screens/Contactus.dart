@@ -24,13 +24,13 @@ class _ContactusScreenState extends State<ContactusScreen> {
         appBar: AppBar(
           title: const Text('Contact Us'),
         ),
-        body: const SafeArea(
+        body: SafeArea(
           bottom: true,
           child: Padding(
-            padding: EdgeInsets.only(top: 0.0, left: 24.0, right: 24.0),
+            padding: const EdgeInsets.only(top: 0.0, left: 24.0, right: 24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
+              children: const <Widget>[
                 Padding(
                   padding: EdgeInsets.only(bottom: 16.0),
                   child: Text(

@@ -4,7 +4,7 @@ import '../../../size_config.dart';
 
 class SearchField extends StatelessWidget {
   const SearchField({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -24,7 +24,7 @@ class SearchField extends StatelessWidget {
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
           hintText: "Search Pharmacy",
-          prefixIcon: Icon(Icons.search),
+          prefixIcon: const Icon(Icons.search),
           contentPadding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(20),
             vertical: getProportionateScreenWidth(9),
