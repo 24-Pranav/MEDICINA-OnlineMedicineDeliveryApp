@@ -78,7 +78,8 @@ class MyDrawer extends StatelessWidget {
                         width: 60,
                         height: 60,
                         child: CircleAvatar(
-                            backgroundImage: AssetImage('assets/images/happy.jpg')),
+                            backgroundImage:
+                                AssetImage('assets/images/happy.jpg')),
                       ),
                       SizedBox(
                         height: 15,

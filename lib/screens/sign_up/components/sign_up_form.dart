@@ -78,7 +78,8 @@ class _SignUpFormState extends State<SignUpForm> {
         confirm_password = value;
       },
       validator: (value) {
-        if ((value == null || value.isEmpty) && !errors.contains(kPassNullError)) {
+        if ((value == null || value.isEmpty) &&
+            !errors.contains(kPassNullError)) {
           addError(error: kPassNullError);
           return "";
         } else if (password != value && !errors.contains(kMatchPassError)) {
@@ -91,7 +92,8 @@ class _SignUpFormState extends State<SignUpForm> {
         labelText: "Confirm Password",
         hintText: "Re-enter your password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(key: Key("confirm_password"), svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: CustomSurffixIcon(
+            key: Key("confirm_password"), svgIcon: "assets/icons/Lock.svg"),
       ),
     );
   }
@@ -109,10 +111,13 @@ class _SignUpFormState extends State<SignUpForm> {
         password = value;
       },
       validator: (value) {
-        if ((value == null || value.isEmpty) && !errors.contains(kPassNullError)) {
+        if ((value == null || value.isEmpty) &&
+            !errors.contains(kPassNullError)) {
           addError(error: kPassNullError);
           return "";
-        } else if (value != null && value.length < 8 && !errors.contains(kShortPassError)) {
+        } else if (value != null &&
+            value.length < 8 &&
+            !errors.contains(kShortPassError)) {
           addError(error: kShortPassError);
           return "";
         }
@@ -122,7 +127,8 @@ class _SignUpFormState extends State<SignUpForm> {
         labelText: "Password",
         hintText: "Enter your password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(key: Key("password"), svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: CustomSurffixIcon(
+            key: Key("password"), svgIcon: "assets/icons/Lock.svg"),
       ),
     );
   }
@@ -139,7 +145,8 @@ class _SignUpFormState extends State<SignUpForm> {
         }
       },
       validator: (value) {
-        if ((value == null || value.isEmpty) && !errors.contains(kEmailNullError)) {
+        if ((value == null || value.isEmpty) &&
+            !errors.contains(kEmailNullError)) {
           addError(error: kEmailNullError);
           return "";
         } else if (value != null &&
@@ -154,7 +161,8 @@ class _SignUpFormState extends State<SignUpForm> {
         labelText: "Email",
         hintText: "Enter your email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(key: Key("email"), svgIcon: "assets/icons/Mail.svg"),
+        suffixIcon: CustomSurffixIcon(
+            key: Key("email"), svgIcon: "assets/icons/Mail.svg"),
       ),
     );
   }

@@ -41,12 +41,13 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                   labelText: "Phone Number",
                   hintText: "Enter your phone number",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
-                  suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+                  suffixIcon:
+                      CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 5.0, horizontal: 16.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16.0),
                 margin: const EdgeInsets.only(
                     top: 30, left: 20.0, right: 20.0, bottom: 20.0),
                 decoration: BoxDecoration(
@@ -135,8 +136,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                           .signInWithCredential(credential);
                       Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()),
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
                           (route) => false);
                     } catch (e) {
                       print(e);

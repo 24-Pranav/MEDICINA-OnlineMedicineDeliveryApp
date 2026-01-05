@@ -34,7 +34,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             ),
             Card(
               margin: const EdgeInsets.only(top: 16),
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -178,7 +179,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       margin: const EdgeInsets.symmetric(vertical: 16),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8.0)),
             backgroundColor: AppColors.orange,
           ),
           onPressed: () {
@@ -201,7 +203,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              children: [Image.asset(icon, width: 200, height: 30), const Text("Credit or Debit Card")],
+              children: [
+                Image.asset(icon, width: 200, height: 30),
+                const Text("Credit or Debit Card")
+              ],
             ),
           )),
     );

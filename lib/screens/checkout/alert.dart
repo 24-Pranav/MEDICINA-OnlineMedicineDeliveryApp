@@ -34,7 +34,10 @@ class _AlertScreenState extends State<AlertScreen> {
               shape: BoxShape.rectangle,
               color: Colors.white,
               borderRadius: BorderRadius.circular(Constants.padding),
-              boxShadow: const [BoxShadow(color: Colors.black, offset: Offset(0, 10), blurRadius: 10)]),
+              boxShadow: const [
+                BoxShadow(
+                    color: Colors.black, offset: Offset(0, 10), blurRadius: 10)
+              ]),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
@@ -75,8 +78,8 @@ class _AlertScreenState extends State<AlertScreen> {
             backgroundColor: Colors.transparent,
             radius: Constants.avatarRadius,
             child: ClipRRect(
-                borderRadius:
-                    const BorderRadius.all(Radius.circular(Constants.avatarRadius)),
+                borderRadius: const BorderRadius.all(
+                    Radius.circular(Constants.avatarRadius)),
                 child: Image.asset("assets/images/right.jpeg")),
           ),
         ),

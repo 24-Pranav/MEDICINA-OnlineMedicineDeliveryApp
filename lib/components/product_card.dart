@@ -69,9 +69,7 @@ class ProductCard extends StatelessWidget {
                     child: SvgPicture.asset(
                       "assets/icons/Heart Icon_2.svg",
                       colorFilter: const ColorFilter.mode(
-                        Color(0XFFFF4848),
-                        BlendMode.srcIn
-                      ),
+                          Color(0XFFFF4848), BlendMode.srcIn),
                     ),
                   ),
                 ),

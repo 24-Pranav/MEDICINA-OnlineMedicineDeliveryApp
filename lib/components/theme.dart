@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 const headingText = TextStyle(
   color: AppColors.black,
   fontSize: 24,
@@ -174,24 +173,22 @@ class Icon {
   String visaCard = 'assets/images_copy/visa.png';
   String discoverCard = 'assets/images_copy/discover.png';
   String chip = 'assets/images_copy/chip.png';
-  
 }
 
-class R{
+class R {
   R._();
 
   static Icon icon = Icon();
   //static Dimens dimens = Dimens();
- // static Strings strings = Strings();
-
+  // static Strings strings = Strings();
 }
+
 const minorText = TextStyle(
   color: Color.fromRGBO(128, 128, 128, 1),
   fontSize: 16,
   fontStyle: FontStyle.normal,
   fontWeight: FontWeight.normal,
 );
-
 
 const whiteText = TextStyle(
   color: AppColors.white,
@@ -209,12 +206,8 @@ const textMedium = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 16,
 );
-const textMediumWhite = TextStyle(
-  fontWeight: FontWeight.bold,
-  fontSize: 16,
-  color: Colors.white
-);
-
+const textMediumWhite =
+    TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white);
 
 const smallText = TextStyle(
   color: Colors.grey,
@@ -223,14 +216,11 @@ const smallText = TextStyle(
   fontWeight: FontWeight.normal,
 );
 
-
 class RouteConstant {
   RouteConstant._();
-
 
   static const String cart = '/cart';
   static const String shippingMethod = '/ship_method';
   static const String creditCard = '/credit_card';
   static const String checkout = '/checkout';
-
 }
