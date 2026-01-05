@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:medicina/components/custom_surffix_icon.dart';
-import 'package:medicina/components/default_button.dart';
-import 'package:medicina/components/form_error.dart';
-import 'package:medicina/components/social_card.dart';
-import 'package:medicina/constants.dart';
-import 'package:medicina/screens/forgot_password/forgot_password_Screen.dart';
 import 'package:medicina/components/no_account_text.dart';
+import 'package:medicina/components/social_card.dart';
 import 'package:medicina/size_config.dart';
 
 import 'sign_form.dart';
@@ -30,7 +24,7 @@ class _BodyState extends State<Body> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: SizeConfig.screenHeight * 0.0),
+                SizedBox(height: SizeConfig.screenHeight * 0.04),
                 Text(
                   "Welcome Back",
                   style: TextStyle(
@@ -40,34 +34,31 @@ class _BodyState extends State<Body> {
                   ),
                 ),
                 const Text(
-                  "Sign in with your email and password \n or social media",
+                  "Sign in with your email and password \nor continue with social media",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
-                const SignForm(key: Key("sign_form")),
+                const SignForm(),
                 SizedBox(height: SizeConfig.screenHeight * 0.08),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SocialCard(
-                      key: const Key("google"),
                       icon: "assets/icons/google-icon.svg",
                       press: () {},
                     ),
                     SocialCard(
-                      key: const Key("facebook"),
                       icon: "assets/icons/facebook-2.svg",
                       press: () {},
                     ),
                     SocialCard(
-                      key: const Key("twitter"),
                       icon: "assets/icons/twitter.svg",
                       press: () {},
                     ),
                   ],
                 ),
                 SizedBox(height: getProportionateScreenHeight(20)),
-                const NoAccountText(key: Key("no_account_text")),
+                const NoAccountText(),
               ],
             ),
           ),

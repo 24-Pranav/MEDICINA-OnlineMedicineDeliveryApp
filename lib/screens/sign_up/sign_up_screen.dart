@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:medicina/theme.dart';
 
 import 'components/body.dart';
 
 class SignUpScreen extends StatelessWidget {
-  static String routeName = "sign_up";
+  static String routeName = "/sign_up";
+
+  const SignUpScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up", style: TextStyle(color: Colors.white)),
-        backgroundColor: Colors.orange[700],
+        title: const Text("Sign Up"),
       ),
-      body: Body(),
+      body: const Body(),
     );
   }
 }

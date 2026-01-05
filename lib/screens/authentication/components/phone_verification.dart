@@ -83,7 +83,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
         await FirebaseAuth.instance.signInWithCredential(credential);
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
+            MaterialPageRoute(builder: (context) => HomeScreen()),
             (route) => false);
       },
       verificationFailed: (FirebaseAuthException e) {
@@ -136,7 +136,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomeScreen()),
+                              builder: (context) => HomeScreen()),
                           (route) => false);
                     } catch (e) {
                       print(e);

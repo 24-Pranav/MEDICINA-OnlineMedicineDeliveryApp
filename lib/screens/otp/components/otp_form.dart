@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medicina/components/default_button.dart';
 
-import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class OtpForm extends StatefulWidget {

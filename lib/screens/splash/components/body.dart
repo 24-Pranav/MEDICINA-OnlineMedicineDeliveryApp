@@ -1,35 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:medicina/components/default_button.dart';
 import 'package:medicina/constants.dart';
 import 'package:medicina/screens/sign_in/sign_in_screen.dart';
-import 'package:medicina/screens/splash/components/splash_content.dart';
 import 'package:medicina/size_config.dart';
 
-//This is the best practice
-import '../components/splash_content.dart';
 import '../../../components/default_button.dart';
+import 'splash_content.dart';
 
 class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
   int currentPage = 0;
-  List<Map<String, String>> splashData = [
+  static const List<Map<String, String>> splashData = [
     {
-      "image": "assets/images/welcome1.png",
-      "text": "Our Medication - Your Satisfaction",
+      "text": "Welcome to Medicina, Let\'s Shop!",
+      "image": "assets/images/splash_1.png"
     },
     {
-      "image": "assets/images/welcome2.png",
-      "text": "Give to us your prescription",
+      "text":
+          "We help people connect with stores \naround United State of America",
+      "image": "assets/images/splash_2.png"
     },
     {
-      "image": "assets/images/welcome3.png",
-      "text": "We deliver medicine to your doorstep",
+      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "image": "assets/images/splash_3.png"
     },
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,8 +48,8 @@ class _BodyState extends State<Body> {
                 },
                 itemCount: splashData.length,
                 itemBuilder: (context, index) => SplashContent(
-                  image: splashData[index]["image"],
-                  text: splashData[index]["text"],
+                  image: splashData[index]["image"]!,
+                  text: splashData[index]['text']!,
                 ),
               ),
             ),
@@ -59,7 +60,7 @@ class _BodyState extends State<Body> {
                     horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: <Widget>[
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
@@ -67,14 +68,14 @@ class _BodyState extends State<Body> {
                         (index) => buildDot(index: index),
                       ),
                     ),
-                    Spacer(flex: 5),
+                    const Spacer(flex: 3),
                     DefaultButton(
                       text: "Continue",
                       press: () {
                         Navigator.pushNamed(context, SignInScreen.routeName);
                       },
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
@@ -85,16 +86,14 @@ class _BodyState extends State<Body> {
     );
   }
 
-  AnimatedContainer buildDot({int index}) {
+  AnimatedContainer buildDot({required int index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,
-      margin: EdgeInsets.only(
-        right: 5,
-      ),
+      margin: const EdgeInsets.only(right: 5),
       height: 6,
       width: currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
+        color: currentPage == index ? kPrimaryColor : const Color(0xFFD8D8D8),
         borderRadius: BorderRadius.circular(3),
       ),
     );

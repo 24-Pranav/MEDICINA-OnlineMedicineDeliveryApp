@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:medicina/components/custom_surffix_icon.dart';
 import 'package:medicina/components/default_button.dart';
 import 'package:medicina/components/form_error.dart';
-import 'package:medicina/screens/authentication/auth_screen.dart';
 import 'package:medicina/screens/forgot_password/forgot_password_Screen.dart';
 import 'package:medicina/screens/login_success/login_success_screen.dart';
-import 'package:medicina/screens/otp/otp_screen.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -19,13 +17,13 @@ class SignForm extends StatefulWidget {
 
 class _SignFormState extends State<SignForm> {
   final _formKey = GlobalKey<FormState>();
-  String email = '';
-  String password = '';
+  String? email;
+  String? password;
   bool remember = false;
-  final List<String> errors = [];
+  final List<String?> errors = [];
 
   void addError({String? error}) {
-    if (error != null && !errors.contains(error)) {
+    if (!errors.contains(error)) {
       setState(() {
         errors.add(error);
       });
@@ -33,7 +31,7 @@ class _SignFormState extends State<SignForm> {
   }
 
   void removeError({String? error}) {
-    if (error != null && errors.contains(error)) {
+    if (errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
@@ -70,21 +68,21 @@ class _SignFormState extends State<SignForm> {
                   "Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
-              ),
+              )
             ],
           ),
-          FormError(key: UniqueKey(), errors: errors),
+          FormError(errors: errors),
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
             press: () {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                // go to otp screen
+                // if all are valid then go to success screen
                 Navigator.pushNamed(context, LoginSuccessScreen.routeName);
               }
             },
-          )
+          ),
         ],
       ),
     );
@@ -93,20 +91,19 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildPasswordFormField() {
     return TextFormField(
       obscureText: true,
-      onSaved: (newValue) => password = newValue!,
+      onSaved: (newValue) => password = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPassNullError);
         } else if (value.length >= 8) {
           removeError(error: kShortPassError);
         }
-        return;
       },
       validator: (value) {
-        if ((value == null || value.isEmpty) && !errors.contains(kPassNullError)) {
+        if (value!.isEmpty) {
           addError(error: kPassNullError);
           return "";
-        } else if (value != null && value.length < 8 && !errors.contains(kShortPassError)) {
+        } else if (value.length < 8) {
           addError(error: kShortPassError);
           return "";
         }
@@ -116,7 +113,7 @@ class _SignFormState extends State<SignForm> {
         labelText: "Password",
         hintText: "Enter your password",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(key: Key("password"), svgIcon: "assets/icons/Lock.svg"),
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
       ),
     );
   }
@@ -124,20 +121,19 @@ class _SignFormState extends State<SignForm> {
   TextFormField buildEmailFormField() {
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
-      onSaved: (newValue) => email = newValue!,
+      onSaved: (newValue) => email = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kEmailNullError);
         } else if (emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }
-        return;
       },
       validator: (value) {
-        if ((value == null || value.isEmpty) && !errors.contains(kEmailNullError)) {
+        if (value!.isEmpty) {
           addError(error: kEmailNullError);
           return "";
-        } else if (value != null && !emailValidatorRegExp.hasMatch(value) && !errors.contains(kInvalidEmailError)) {
+        } else if (!emailValidatorRegExp.hasMatch(value)) {
           addError(error: kInvalidEmailError);
           return "";
         }
@@ -147,7 +143,7 @@ class _SignFormState extends State<SignForm> {
         labelText: "Email",
         hintText: "Enter your email",
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: CustomSurffixIcon(key: Key("email"), svgIcon: "assets/icons/Mail.svg"),
+        suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
       ),
     );
   }

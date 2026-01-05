@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
-    Key key,
-    this.text,
-    this.image,
+    Key? key,
+    required this.text,
+    required this.image,
   }) : super(key: key);
   final String text, image;
 
@@ -15,25 +14,24 @@ class SplashContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Spacer(),
+        const Spacer(),
         Text(
           "MEDICINA",
           style: TextStyle(
-            fontFamily: 'Times New Roman',
-            fontSize: getProportionateScreenWidth(40),
-            color: Colors.white,
+            fontSize: getProportionateScreenWidth(36),
+            color: Colors.red,
+            fontWeight: FontWeight.bold,
           ),
         ),
         Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white),
         ),
-        Spacer(flex: 2),
+        const Spacer(flex: 2),
         Image.asset(
           image,
-          height: getProportionateScreenHeight(365),
-          width: getProportionateScreenWidth(335),
+          height: getProportionateScreenHeight(265),
+          width: getProportionateScreenWidth(235),
         ),
       ],
     );
